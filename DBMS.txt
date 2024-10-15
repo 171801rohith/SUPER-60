@@ -1,0 +1,16 @@
+DBMS
+
+Goal-lvl 5
+Action -lvl 4
+Decision- lvl 3
+Intelligence - lvl 2
+information -lvl 1
+RAW DATA -lvl 0
+
+
+
+
+MASTER DATA 
+-repeatable standard set of data 
+
+Transactional  data

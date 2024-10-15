@@ -1,0 +1,19 @@
+Stuffs to do
+definitions 
+descriptions
+example
+real-world implementation 
+why?
+advantages
+disadvantages
+features
+Problem statements
+architecture and design 
+top 5 articles
+10 errors(mistakes)
+similar reference 
+Story telling( help us to grow up the ladder)
+Scale?(large context)(learn to scale)
+performance 
+Security 
+memory
