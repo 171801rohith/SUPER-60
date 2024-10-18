@@ -1,6 +1,4 @@
 class Organization:
-    name = None
-
     def __init__(self, name):
         self.name = name
 
@@ -9,31 +7,17 @@ class Organization:
 
 
 class Trainer:
-    def __init__(self, Organization):
+    def __init__(self, name, Organization):
+        self.name = name
         self.Organization = Organization
 
     def getOrganization(self):
-        return self.Organization
+        return self.Organization.getname()
 
 
 class Trainee:
-    pass
-
-
-class Training:
-    def __init__(self, NumOfTrainees, TrainingOrganizationName, TrainingDurationInHrs):
-        self.NumOfTrainees = NumOfTrainees
-        self.TrainingOrganizationName = TrainingOrganizationName
-        self.TrainingDurationInHrs = TrainingDurationInHrs
-
-    def getNumOfTrainees(self):
-        return self.NumOfTrainees
-
-    def getTrainingOrganizationName(self):
-        return self.TrainingOrganizationName
-
-    def getTrainingDurationInHrs(self):
-        return self.TrainingDurationInHrs
+    def __init__(self, traineeName):
+        self.traineeName = traineeName
 
 
 class Course:
@@ -53,8 +37,6 @@ class Module:
 
 
 class Unit:
-    durationHrs = None
-
     def __init__(self, durationHrs):
         self.durationHrs = durationHrs
 
@@ -63,7 +45,25 @@ class Unit:
 
 
 class Topic:
-    name = None
-
     def __init__(self, name):
         self.name = name
+
+
+class Training:
+    def __init__(self, Trainer, Trainee, Course):
+        self.Trainer = Trainer
+        self.Trainee = Trainee
+        self.Course = Course
+
+    def getNumOfTrainees(self):
+        return len(self.Trainee)
+
+    def getTrainingOrganizationName(self):
+        return self.Trainer.getOrganization()
+
+    def getTrainingDurationInHrs(self):
+        totalDuration = 0
+        for M in self.Course.getModules():
+            for U in M.getUnits():
+                totalDuration += U.getDurationHrs()
+        return totalDuration

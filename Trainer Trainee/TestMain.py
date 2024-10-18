@@ -10,37 +10,44 @@ from Train import *
 # from Train import Unit
 # from Train import Topic
 
-training = Training(10, "10 seconds LTD.", 60)
-print("Number of Trainees =", training.getNumOfTrainees())
-print("Name of the Organization =", training.getTrainingOrganizationName())
-print("Training Duration In Hours =", training.getTrainingDurationInHrs(), "Hrs")
-
-print("----------------------------------------------------------------------")
-
-trainer = Trainer("10 second LTD.")
-print("Organization =", trainer.getOrganization())
-
-print("----------------------------------------------------------------------")
-
 organization = Organization("10 second LTD.")
 print("Name =", organization.getname())
 
 print("----------------------------------------------------------------------")
 
-mods = ["Java", "Python", "C/C++"]
-course = Course(mods)
+trainer1 = Trainer("Yayha", organization)
+print("Trainer =", trainer1.getOrganization())
+
+print("----------------------------------------------------------------------")
+
+trainee1 = Trainee("Aadhithya")
+trainee2 = Trainee("Abhishek")
+
+print("----------------------------------------------------------------------")
+
+unit1 = Unit(3)
+unit2 = Unit(5)
+unit3 = Unit(1)
+print("Duration in Hours =", unit1.getDurationHrs(), "Hrs")
+print("Duration in Hours =", unit2.getDurationHrs(), "Hrs")
+print("Duration in Hours =", unit3.getDurationHrs(), "Hrs")
+
+print("----------------------------------------------------------------------")
+
+module1 = Module([unit1, unit2, unit3])
+print("Units in Module =", module1.getUnits())
+
+print("----------------------------------------------------------------------")
+
+course = Course([module1])
 print("Modules in Course =", course.getModules())
 
 print("----------------------------------------------------------------------")
 
-uts = ["String Methods", "Class n Objects", "Packages"]
-module = Module(uts)
-print("Units in Module =", module.getUnits())
-
-print("----------------------------------------------------------------------")
-
-unit = Unit(3)
-print("Duration in Hours =",unit.getDurationHrs(), "Hrs")
+training = Training(trainer1, [trainee1, trainee2], course)
+print("Number of Trainees =", training.getNumOfTrainees())
+print("Name of the Organization =", training.getTrainingOrganizationName())
+print("Training Duration In Hours =", training.getTrainingDurationInHrs(), "Hrs")
 
 print("----------------------------------------------------------------------")
 
