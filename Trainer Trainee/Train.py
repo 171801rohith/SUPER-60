@@ -1,3 +1,25 @@
+class Organization:
+    name = None
+
+    def __init__(self, name):
+        self.name = name
+
+    def getname(self):
+        return self.name
+
+
+class Trainer:
+    def __init__(self, Organization):
+        self.Organization = Organization
+
+    def getOrganization(self):
+        return self.Organization
+
+
+class Trainee:
+    pass
+
+
 class Training:
     def __init__(self, NumOfTrainees, TrainingOrganizationName, TrainingDurationInHrs):
         self.NumOfTrainees = NumOfTrainees
@@ -12,28 +34,6 @@ class Training:
 
     def getTrainingDurationInHrs(self):
         return self.TrainingDurationInHrs
-
-
-class Trainee:
-    pass
-
-
-class Trainer:
-    def __init__(self, Organization):
-        self.Organization = Organization
-
-    def getOrganization(self):
-        return self.Organization
-
-
-class Organization:
-    name = None
-
-    def __init__(self, name):
-        self.name = name
-
-    def getname(self):
-        return self.name
 
 
 class Course:
