@@ -18,8 +18,6 @@ print("----------------------------------------------------------------------")
 trainer1 = Trainer("Yayha", organization)
 print("Trainer =", trainer1.getOrganization())
 
-print("----------------------------------------------------------------------")
-
 trainee1 = Trainee("Aadhithya")
 trainee2 = Trainee("Abhishek")
 
