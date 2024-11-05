@@ -41,20 +41,28 @@ public class LAB1 {
         return num;
     }
 
-    public static void sumArr(int[] array) {
+    public static double sumArr(int[] array) {
         double sum = 0;
         for (int i = 0; i < array.length; i++) {
             sum += array[i];
         }
-        System.out.println("Sum of the array is " + sum);
+        return sum;
     }
 
-    public static void sumArr(ArrayList<Integer> aList) {
+    public static double sumArr(double[] array) {
+        double sum = 0;
+        for (int i = 0; i < array.length; i++) {
+            sum += array[i];
+        }
+        return sum;
+    }
+
+    public static double sumArr(ArrayList<Integer> aList) {
         double sum = 0;
         for (int i = 0; i < aList.size(); i++) {
             sum += aList.get(i);
         }
-        System.out.println("Sum of the array is " + sum);
+        return sum;
     }
 
     public static boolean isPrime(int n) {
@@ -68,6 +76,40 @@ public class LAB1 {
             return false;
         }
         return true;
+    }
+
+    public static void Level_3(int[] arr) {
+        ArrayList<ArrayList<Integer>> finalArr = new ArrayList<>();
+        for (int i = 0; i < arr.length; i++) {
+            ArrayList<Integer> subArr = new ArrayList<>();
+            subArr.add(arr[i]);
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] > 0) {
+                    subArr.add(arr[j]);
+                } else {
+                    finalArr.add(subArr);
+                    i = j - 1;
+                    break;
+                }
+            }
+        }
+
+        double[] sumArray = new double[finalArr.size()];
+
+        int i = 0;
+        for (ArrayList<Integer> row : finalArr) {
+            System.out.format("SubArray[%2d] = ", i + 1);
+            sumArray[i] = sumArr(row);
+            System.out.println(row);
+            System.out.println("SUM = " + sumArray[i]);
+            System.out.println();
+            i++;
+        }
+        System.out.println("Number of SubArrays = " + finalArr.size());
+        System.out.println();
+        System.out.println("Sum = " + sumArr(sumArray));
+        System.out.println();
+        System.out.println();
     }
 
     public static void main(String[] args) {
@@ -87,13 +129,16 @@ public class LAB1 {
         System.out.println();
         System.out.println();
 
-        sumArr(arr);
+        System.out.println("Sum of Array = " + sumArr(arr));
         System.out.println();
         System.out.println();
 
         ArrayList<Integer> primeArr = new ArrayList<>();
         for (int i = 1; i < arr.length - 1; i++) {
-            if (isPrime(Math.abs(arr[i]) - 1) || isPrime(Math.abs(arr[i]) + 1)) {
+            if (arr[i] < 0) {
+                continue;
+            }
+            if (isPrime(arr[i] - 1) || isPrime(arr[i] + 1)) {
                 primeArr.add(arr[i]);
             }
         }
@@ -101,12 +146,12 @@ public class LAB1 {
         System.out.println(primeArr);
         System.out.println();
         System.out.println();
-        
-        sumArr(primeArr);
+
+        System.out.println("Sum of Prime array = " + sumArr(primeArr));
         System.out.println();
         System.out.println();
 
-        
+        Level_3(arr);
 
     }
 }
