@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from animals import Animals
 from habitat import Habitat
 
-
+ 
 class Staff(ABC):
     def __init__(self, name, energy):
         self._name = name

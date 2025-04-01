@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 import random
-
+ 
 
 class Animals(ABC):
     def __init__(

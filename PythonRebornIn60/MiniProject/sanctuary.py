@@ -52,10 +52,6 @@
 # use_energy(self, amount): Reduces _energy (minimum 0).
 
 
-
-
-
-
 import random
 from animals import Animals, Elephant, Lion, Parrot
 from habitat import Aviary, Habitat, Jungle, Savanna
