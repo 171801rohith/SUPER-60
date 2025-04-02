@@ -125,17 +125,20 @@ class Sanctuary:
 
 
 def main():
-    animals = [
-        Lion("Leo", 10, 20, "Savanna"),
-        Elephant("Mirchi", 90, 20, "Jungle"),
-        Parrot("Chichi", 70, 45, "Aviary"),
-    ]
-    habitats = [
-        Savanna(50, animals[0]),
-        Jungle(75, animals[1]),
-        Aviary(100, animals[2]),
-    ]
-    staff = [Caretaker("Shek", 50), Veterinarian("Aadithya", 85)]
+    lion = Lion("Leo", 10, 20, "Savanna")
+    elephant = Elephant("Mirchi", 90, 20, "Jungle")
+    parrot = Parrot("Chichi", 70, 45, "Aviary")
+
+    savanna = Savanna(50, lion)
+    jungle = Jungle(75, elephant)
+    aviary = Aviary(100, parrot)
+
+    caretaker = Caretaker("Shek", 50)
+    veterinarian = Veterinarian("Aadithya", 85)
+
+    animals = [lion, elephant, parrot]
+    habitats = [savanna, jungle, aviary]
+    staff = [caretaker, veterinarian]
 
     sanctuary = Sanctuary(animals, habitats, staff)
     print("--- Day 1 ---")
