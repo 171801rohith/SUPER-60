@@ -9,7 +9,7 @@ def mul(a: int, b:int):
 
 def div(a: int, b:int):
     if b == 0:
-        raise ZeroDivisionError
+        raise ZeroDivisionError("Cannot divide by zero")
     else:
         return a / b
     
