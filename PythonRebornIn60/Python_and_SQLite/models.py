@@ -10,12 +10,13 @@ from sqlmodel import Field, SQLModel
 
 class Hero(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)
-    name: str
+    name: str = Field(index=True)
     secret_name: str
-    age: int | None = None  # nullable Column
+    age: int | None = Field(default=None, index=True)  # nullable Column
+    team_id: int | None = Field(default=None, foreign_key="team.id")
 
 
 class Team(SQLModel, table=True):
     id: int |  None = Field(default=None, primary_key=True)
-    team_name: str
-    team_strength: int
+    team_name: str = Field(index=True)
+    head_quarters: str
