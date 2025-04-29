@@ -9,19 +9,46 @@ def create_heros():
     with Session(engine) as session:
         avengers = Team(team_name="Avengers", head_quarters="Stark Tower")
         xmen = Team(team_name="X-men", head_quarters="X-Mansion")
-        session.add(avengers)
-        session.add(xmen)
-        session.commit()
+
+        # session.add(avengers)
+        # session.add(xmen)
+        # session.commit()
 
         deadpool = Hero(
-            name="Deadpool", secret_name="Wade Wilson", age=45, team_id=xmen.id
+            name="Deadpool",
+            secret_name="Wade Wilson",
+            age=45,
+            # team_id=xmen.id,
+            team=[xmen, avengers],
         )
         iron_man = Hero(
-            name="Iron Man", secret_name="Tony Stark", age=40, team_id=avengers.id
+            name="Iron Man",
+            secret_name="Tony Stark",
+            age=40,
+            # team_id=avengers.id,
+            team=[avengers],
         )
         spider_man = Hero(name="Spider Man", secret_name="Peter Parker", age=17)
 
         session.add_all([deadpool, iron_man, spider_man])
+        session.commit()
+
+        red_guardian = Hero(name="Red Guardian", secret_name="Aadithya", age=170)
+        winter_soldier = Hero(name="Winter Soldier", secret_name="Bucky Burns", age=185)
+        # thunderbolts = Team(
+        #     team_name="ThunderBolts*",
+        #     head_quarters="Val Tower",
+        #     heroes=[red_guardian, winter_soldier],
+        # )
+        # OR
+        thunderbolts = Team(
+            team_name="ThunderBolts*",
+            head_quarters="Val Tower",
+        )
+        thunderbolts.heroes.append(red_guardian)
+        thunderbolts.heroes.append(winter_soldier)
+
+        session.add(thunderbolts)
         session.commit()
 
 
@@ -61,3 +88,12 @@ def update_hero():
         session.add(hero)
         session.commit()
         session.refresh(hero)
+
+
+def select_():
+    with Session(engine) as session:
+        statement = select(Hero).where(Hero.name == "Winter Soldier")
+        result = session.exec(statement)
+        spider_man = result.one()
+
+        print(spider_man.team)

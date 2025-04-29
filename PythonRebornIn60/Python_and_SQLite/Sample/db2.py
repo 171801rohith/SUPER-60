@@ -1,5 +1,5 @@
 from sqlmodel import create_engine, Session, select
-from models2 import Hero
+from Samole.models2 import Hero
 
 engine = create_engine("sqlite:///HeroData2.db", echo=True)
 

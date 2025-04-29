@@ -1,5 +1,5 @@
 from sqlmodel import SQLModel
-from db2 import *
+from Samole.db2 import *
 
 
 def create_db():
