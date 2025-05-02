@@ -17,6 +17,7 @@ from databaseUni import (
     get_courses_for_student,
     get_students_in_courses,
     set_enrollment_grade,
+    unenroll_student
 )
 
 
@@ -65,4 +66,6 @@ if __name__ == "__main__":
     # get_students_in_courses(1)
 
     # set_enrollment_grade(1, 2, "A")
-    set_enrollment_grade(1, 5, "A+")
+    # set_enrollment_grade(1, 5, "A+")
+
+    unenroll_student(2, 1)

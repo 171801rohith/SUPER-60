@@ -234,3 +234,20 @@ def set_enrollment_grade(student_id, course_id, grade):
             session.commit()
             print("Grade updated.")
         print("=" * 80)
+
+
+def unenroll_student(student_id, course_id):
+    with Session(engine) as session:
+        query = select(StudentCourseLink).where(
+            StudentCourseLink.student_id == student_id,
+            StudentCourseLink.course_id == course_id,
+        )
+        sc = session.exec(query).first()
+        print("=" * 80)
+        if not sc:
+            print("Not Found In DataBase.")
+        else:
+            session.delete(sc)
+            session.commit()
+            print("Deletion Successfull.")
+        print("=" * 80)
