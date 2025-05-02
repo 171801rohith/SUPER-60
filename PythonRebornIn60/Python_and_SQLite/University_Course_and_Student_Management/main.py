@@ -5,6 +5,13 @@ from databaseUni import (
     create_department,
     create_student,
     add_course_to_department,
+    add_course_to_students,
+    get_department_by_name,
+    get_student_by_email,
+    get_course_by_code,
+    all_courses,
+    all_departments,
+    all_students,
 )
 
 
@@ -26,5 +33,17 @@ if __name__ == "__main__":
 
     # create_student("Aadithya", "Nayak", "aadithya@gmail.com")
     # create_student("Abhishek", "H", "abhishek@gmail.com")
+
     # add_course_to_department(["PY01", "J01"], "CSE")
-    add_course_to_department(["AI01", "JS01", "DA01"], "AIML")
+    # add_course_to_department(["AI01", "JS01", "DA01"], "AIML")
+
+    # add_course_to_students(["AI01", "JS01", "DA01"], "aadithya@gmail.com")
+    # add_course_to_students([ "J01", "AI01"], "abhishek@gmail.com")
+
+    # get_department_by_name("cse")
+    # get_student_by_email("aadithya@gmail.com")
+    # get_course_by_code("j01")
+
+    all_students()
+    all_courses()
+    all_departments()
