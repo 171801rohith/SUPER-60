@@ -30,3 +30,14 @@ def create_department(name):
         print("=" * 80)
         print("Commit Successfull.")
         print("=" * 80)
+
+
+def create_student(fname, lname, email):
+    with Session(engine) as session:
+        stud = Student(first_name=fname, last_name=lname, email=email)
+        session.add(stud)
+        session.commit()
+
+        print("=" * 80)
+        print("Commit Successfull.")
+        print("=" * 80)
