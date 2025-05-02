@@ -19,14 +19,14 @@ def create_heros():
             secret_name="Wade Wilson",
             age=45,
             # team_id=xmen.id,
-            team=[xmen, avengers],
+            teams=[xmen, avengers],
         )
         iron_man = Hero(
             name="Iron Man",
             secret_name="Tony Stark",
             age=40,
             # team_id=avengers.id,
-            team=[avengers],
+            teams=[avengers],
         )
         spider_man = Hero(name="Spider Man", secret_name="Peter Parker", age=17)
 

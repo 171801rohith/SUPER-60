@@ -1,5 +1,5 @@
 from sqlmodel import SQLModel
-from Sample.db2 import *
+from database import engine
 
 
 def create_db():
@@ -8,7 +8,3 @@ def create_db():
 
 if __name__ == "__main__":
     create_db()
-    # create_heros()
-    # select_all_hero()
-    update_one()
-    addDataWithParams("Nan",-12,"none")
