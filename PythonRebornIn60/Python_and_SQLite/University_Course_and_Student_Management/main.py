@@ -12,7 +12,8 @@ from databaseUni import (
     all_courses,
     all_departments,
     all_students,
-    update_student_email
+    update_student_email,
+    delete_course_by_code
 )
 
 
@@ -28,6 +29,7 @@ if __name__ == "__main__":
     # create_course("Java", "J01")
     # create_course("Easy AIML", "AI01")
     # create_course("Data Analytics", "DA01")
+    # create_course("Graph Theory", "GT01", department_id=1)
 
     # create_department("CSE")
     # create_department("AIML")
@@ -49,4 +51,6 @@ if __name__ == "__main__":
     # all_courses()
     # all_departments()
 
-    update_student_email("aadithya@gmail.com", "aadithya1234@gmail.com")
+    # update_student_email("aadithya@gmail.com", "aadithya1234@gmail.com")
+
+    delete_course_by_code("GT01")

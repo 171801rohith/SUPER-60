@@ -5,9 +5,9 @@ sqlite_url = "sqlite:///universityDB.db"
 engine = create_engine(sqlite_url, echo=True)
 
 
-def create_course(title, code):
+def create_course(title, code, **kwargs):
     with Session(engine) as session:
-        course = Course(title=title, code=code)
+        course = Course(title=title, code=code, **kwargs)
         session.add(course)
         session.commit()
 
@@ -161,4 +161,18 @@ def update_student_email(oldemail, newemail):
             session.add(stud)
             session.commit()
             print("Update Successfull.")
+        print("=" * 80)
+
+
+def delete_course_by_code(code):
+    with Session(engine) as session:
+        query = select(Course).where(Course.code == code.upper())
+        course = session.exec(query).first()
+        print("=" * 80)
+        if not course:
+            print("Not Found In DataBase.")
+        else:
+            session.delete(course)
+            session.commit()
+            print("Deletion Successfull.")
         print("=" * 80)
