@@ -41,11 +41,11 @@ def create_student(fname, lname, email):
 def add_course_to_department(codes, dept_name):
     with Session(engine) as session:
         query = select(Department).where(Department.name == dept_name.upper())
-        dept = session.exec(query).one()
+        dept = session.exec(query).first()
         courses = []
         for code in codes:
             query = select(Course).where(Course.code == code.upper())
-            course = session.exec(query).one()
+            course = session.exec(query).first()
             courses.append(course)
         dept.courses = courses
         session.add(dept)
@@ -59,11 +59,11 @@ def add_course_to_department(codes, dept_name):
 def add_course_to_students(codes, email):
     with Session(engine) as session:
         query = select(Student).where(Student.email == email.lower())
-        stud = session.exec(query).one()
+        stud = session.exec(query).first()
         courses = []
         for code in codes:
             query = select(Course).where(Course.code == code.upper())
-            course = session.exec(query).one()
+            course = session.exec(query).first()
             courses.append(course)
         stud.courses = courses
         session.add(stud)
@@ -77,7 +77,7 @@ def add_course_to_students(codes, email):
 def get_department_by_name(dept_name):
     with Session(engine) as session:
         query = select(Department).where(Department.name == dept_name.upper())
-        dept = session.exec(query).one()
+        dept = session.exec(query).first()
         print("=" * 80)
         if not dept:
             print("Not Found In DataBase.")
@@ -89,7 +89,7 @@ def get_department_by_name(dept_name):
 def get_student_by_email(email):
     with Session(engine) as session:
         query = select(Student).where(Student.email == email.lower())
-        stud = session.exec(query).one()
+        stud = session.exec(query).first()
         print("=" * 80)
         if not stud:
             print("Not Found In DataBase.")
@@ -101,7 +101,7 @@ def get_student_by_email(email):
 def get_course_by_code(code):
     with Session(engine) as session:
         query = select(Course).where(Course.code == code.upper())
-        course = session.exec(query).one()
+        course = session.exec(query).first()
         print("=" * 80)
         if not course:
             print("Not Found In DataBase.")
@@ -146,4 +146,19 @@ def all_students():
         else:
             for stud in studs:
                 print(stud)
+        print("=" * 80)
+
+
+def update_student_email(oldemail, newemail):
+    with Session(engine) as session:
+        query = select(Student).where(Student.email == oldemail.lower())
+        stud = session.exec(query).first()
+        print("=" * 80)
+        if not stud:
+            print("Not Found In DataBase.")
+        else:
+            stud.email = newemail
+            session.add(stud)
+            session.commit()
+            print("Update Successfull.")
         print("=" * 80)

@@ -12,6 +12,7 @@ from databaseUni import (
     all_courses,
     all_departments,
     all_students,
+    update_student_email
 )
 
 
@@ -44,6 +45,8 @@ if __name__ == "__main__":
     # get_student_by_email("aadithya@gmail.com")
     # get_course_by_code("j01")
 
-    all_students()
-    all_courses()
-    all_departments()
+    # all_students()
+    # all_courses()
+    # all_departments()
+
+    update_student_email("aadithya@gmail.com", "aadithya1234@gmail.com")
