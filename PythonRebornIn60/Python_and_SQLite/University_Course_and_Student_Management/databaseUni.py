@@ -1,0 +1,21 @@
+from sqlmodel import SQLModel, create_engine, select, Session
+from modelsUni import (
+    Student,
+    StudentCourseLink,
+    Department,
+    Course,
+)
+
+sqlite_url = "sqlite:///universityDB.db"
+engine = create_engine(sqlite_url, echo=True)
+
+
+def create_course(title, code):
+    with Session(engine) as session:
+        course = Course(title=title, code=code)
+        session.add(course)
+        session.commit()
+
+        print("=" * 80)
+        print("Commit Successfull.")
+        print("=" * 80)

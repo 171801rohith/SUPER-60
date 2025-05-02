@@ -1,5 +1,5 @@
 from sqlmodel import SQLModel
-from database import engine
+from databaseUni import engine, create_course
 
 
 def create_db():
@@ -7,4 +7,7 @@ def create_db():
 
 
 if __name__ == "__main__":
-    create_db()
+    # create_db()
+    
+    create_course("Python", "PY01")
+    create_course("JavaScript", "JS01")
