@@ -19,3 +19,14 @@ def create_course(title, code):
         print("=" * 80)
         print("Commit Successfull.")
         print("=" * 80)
+
+
+def create_department(name):
+    with Session(engine) as session:
+        dept = Department(name=name)
+        session.add(dept)
+        session.commit()
+
+        print("=" * 80)
+        print("Commit Successfull.")
+        print("=" * 80)
