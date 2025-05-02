@@ -216,3 +216,21 @@ def get_students_in_courses(course_id):
         else:
             print(course.students)
         print("=" * 80)
+
+
+def set_enrollment_grade(student_id, course_id, grade):
+    with Session(engine) as session:
+        query = select(StudentCourseLink).where(
+            StudentCourseLink.student_id == student_id,
+            StudentCourseLink.course_id == course_id,
+        )
+        sc = session.exec(query).first()
+        print("=" * 80)
+        if not sc:
+            print("Not Found In DataBase.")
+        else:
+            sc.grade = grade
+            session.add(sc)
+            session.commit()
+            print("Grade updated.")
+        print("=" * 80)
