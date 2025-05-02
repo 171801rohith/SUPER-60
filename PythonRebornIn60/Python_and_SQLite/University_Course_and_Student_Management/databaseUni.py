@@ -56,22 +56,38 @@ def add_course_to_department(codes, dept_name):
         print("=" * 80)
 
 
-def add_course_to_students(codes, email):
+def enroll_student(student_id, course_id):
     with Session(engine) as session:
-        query = select(Student).where(Student.email == email.lower())
-        stud = session.exec(query).first()
-        courses = []
-        for code in codes:
-            query = select(Course).where(Course.code == code.upper())
-            course = session.exec(query).first()
-            courses.append(course)
-        stud.courses = courses
-        session.add(stud)
-        session.commit()
-
-        print("=" * 80)
-        print("Commit Successfull.")
-        print("=" * 80)
+        query = select(StudentCourseLink).where(
+            StudentCourseLink.student_id == student_id,
+            StudentCourseLink.course_id == course_id,
+        )
+        sc = session.exec(query).first()
+        if sc:
+            print("=" * 80)
+            print("Already Enrolled.")
+            print("=" * 80)
+        else:
+            query = select(Student).where(Student.id == student_id)
+            stud = session.exec(query).first()
+            if stud:
+                query = select(Course).where(Course.id == course_id)
+                course = session.exec(query).first()
+                if course:
+                    stud.courses.append(course)
+                    session.add(stud)
+                    session.commit()
+                    print("=" * 80)
+                    print("Commit Successfull.")
+                    print("=" * 80)
+                else:
+                    print("=" * 80)
+                    print("Course not in Database.")
+                    print("=" * 80)
+            else:
+                print("=" * 80)
+                print("Student not in Database.")
+                print("=" * 80)
 
 
 def get_department_by_name(dept_name):
@@ -175,4 +191,28 @@ def delete_course_by_code(code):
             session.delete(course)
             session.commit()
             print("Deletion Successfull.")
+        print("=" * 80)
+
+
+def get_courses_for_student(student_id):
+    with Session(engine) as session:
+        query = select(Student).where(Student.id == student_id)
+        stud = session.exec(query).first()
+        print("=" * 80)
+        if not stud:
+            print("Not Found In DataBase.")
+        else:
+            print(stud.courses)
+        print("=" * 80)
+
+
+def get_students_in_courses(course_id):
+    with Session(engine) as session:
+        query = select(Course).where(Course.id == course_id)
+        course = session.exec(query).first()
+        print("=" * 80)
+        if not course:
+            print("Not Found In DataBase.")
+        else:
+            print(course.students)
         print("=" * 80)

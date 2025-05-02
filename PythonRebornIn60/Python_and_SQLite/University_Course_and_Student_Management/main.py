@@ -5,7 +5,7 @@ from databaseUni import (
     create_department,
     create_student,
     add_course_to_department,
-    add_course_to_students,
+    enroll_student,
     get_department_by_name,
     get_student_by_email,
     get_course_by_code,
@@ -13,7 +13,9 @@ from databaseUni import (
     all_departments,
     all_students,
     update_student_email,
-    delete_course_by_code
+    delete_course_by_code,
+    get_courses_for_student,
+    get_students_in_courses
 )
 
 
@@ -40,9 +42,6 @@ if __name__ == "__main__":
     # add_course_to_department(["PY01", "J01"], "CSE")
     # add_course_to_department(["AI01", "JS01", "DA01"], "AIML")
 
-    # add_course_to_students(["AI01", "JS01", "DA01"], "aadithya@gmail.com")
-    # add_course_to_students([ "J01", "AI01"], "abhishek@gmail.com")
-
     # get_department_by_name("cse")
     # get_student_by_email("aadithya@gmail.com")
     # get_course_by_code("j01")
@@ -53,4 +52,13 @@ if __name__ == "__main__":
 
     # update_student_email("aadithya@gmail.com", "aadithya1234@gmail.com")
 
-    delete_course_by_code("GT01")
+    # delete_course_by_code("GT01")
+
+    # enroll_student(1, 2)
+    # enroll_student(2, 1)
+    # enroll_student(1, 4)
+    # enroll_student(1, 5)
+
+    # get_courses_for_student(1)
+
+    get_students_in_courses(1)
