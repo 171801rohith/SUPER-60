@@ -61,11 +61,11 @@ if __name__ == "__main__":
     # enroll_student(1, 4)
     # enroll_student(1, 5)
 
-    # get_courses_for_student(1)
+    get_courses_for_student(1)
 
     # get_students_in_courses(1)
 
     # set_enrollment_grade(1, 2, "A")
     # set_enrollment_grade(1, 5, "A+")
 
-    unenroll_student(2, 1)
+    # unenroll_student(1, 2)
