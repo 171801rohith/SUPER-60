@@ -15,7 +15,7 @@ options.add_argument("--disable-dev-shm-usage")
 options.add_argument("--log-level=3") 
 
 service = Service(executable_path=driver_path)
-def scrap():
+def scrape():
     for page in range(1, 4):
         url = f"https://webscraper.io/test-sites/e-commerce/static/computers/laptops?page={page}"
 
@@ -40,4 +40,4 @@ def scrap():
 
     print(df)
 
-scrap()
+scrape()
