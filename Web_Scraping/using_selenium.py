@@ -40,4 +40,8 @@ def scrape():
 
     print(df)
 
+start = time.perf_counter()
 scrape()
+end = time.perf_counter()
+
+print(end - start)

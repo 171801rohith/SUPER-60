@@ -8,6 +8,7 @@ dependencies = [
     "beautifulsoup4>=4.13.4",
     "lxml>=6.0.0",
     "pandas>=2.3.1",
+    "playwright>=1.54.0",
     "pyautogui>=0.9.54",
     "requests>=2.32.4",
     "schedule>=1.2.2",
