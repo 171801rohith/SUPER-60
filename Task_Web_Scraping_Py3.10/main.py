@@ -1,10 +1,24 @@
 import streamlit as st
 import pandas as pd
 
-from scrape import Scraper
+# from scrape_selenium import Scraper
+from scrape_playwright import Scraper
+from Compare.compare_playwright_selenium import time_taken
 
 st.set_page_config(page_title="Web Scraper", page_icon="🕷️")
 st.title("Web Scraper of - E Maryland Marketplace (EMMA)")
+
+
+@st.cache_data
+def compare(pages):
+    return pd.DataFrame(
+        data=[time_taken(page) for page in range(1, pages)],
+        columns=["Playwright", "Selenium"],
+        index=[page for page in range(1, pages)],
+    )
+
+
+st.line_chart(compare(5))
 
 
 @st.cache_data
@@ -26,7 +40,7 @@ if scrape:
     st.session_state.result = scraper.scrape_site(pages)
 
 
-if not st.session_state.result.empty:
+if st.session_state.get("result") is not None and not st.session_state.result.empty:
     st.write(st.session_state.result)
 
     with st.form(key="file", border=True):

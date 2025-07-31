@@ -14,7 +14,7 @@ class Scraper:
         self.solicitation_list = []
         self.driver_path = "C:/Users/rohit/Downloads/edgedriver_win64/msedgedriver.exe"
         self.options = webdriver.EdgeOptions()
-
+        self.options.add_argument("--headless")
         self.service = Service(executable_path=self.driver_path)
         self.url = url
         self.driver = webdriver.Edge(service=self.service, options=self.options)
@@ -63,4 +63,3 @@ class Scraper:
             print("Error:", e)
         finally:
             self.driver.quit()
-
